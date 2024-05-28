@@ -33,14 +33,10 @@ namespace ExamProject
             components = new System.ComponentModel.Container();
             dataGridViewNotes = new DataGridView();
             noteBindingSource = new BindingSource(components);
-            noteIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            contextDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             importanceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            ownerIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            ownerDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             CreationDate = new DataGridViewTextBoxColumn();
-            ModificationDate = new DataGridViewTextBoxColumn();
+            richTextBoxNoteContext = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewNotes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noteBindingSource).BeginInit();
             SuspendLayout();
@@ -49,22 +45,17 @@ namespace ExamProject
             // 
             dataGridViewNotes.AutoGenerateColumns = false;
             dataGridViewNotes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewNotes.Columns.AddRange(new DataGridViewColumn[] { noteIdDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, contextDataGridViewTextBoxColumn, importanceDataGridViewTextBoxColumn, ownerIdDataGridViewTextBoxColumn, ownerDataGridViewTextBoxColumn, CreationDate, ModificationDate });
+            dataGridViewNotes.Columns.AddRange(new DataGridViewColumn[] { titleDataGridViewTextBoxColumn, importanceDataGridViewTextBoxColumn, CreationDate });
             dataGridViewNotes.DataSource = noteBindingSource;
             dataGridViewNotes.Location = new Point(12, 12);
             dataGridViewNotes.Name = "dataGridViewNotes";
-            dataGridViewNotes.Size = new Size(842, 426);
+            dataGridViewNotes.Size = new Size(343, 426);
             dataGridViewNotes.TabIndex = 0;
+            dataGridViewNotes.SelectionChanged += dataGridViewNotes_SelectionChanged;
             // 
             // noteBindingSource
             // 
             noteBindingSource.DataSource = typeof(Note);
-            // 
-            // noteIdDataGridViewTextBoxColumn
-            // 
-            noteIdDataGridViewTextBoxColumn.DataPropertyName = "NoteId";
-            noteIdDataGridViewTextBoxColumn.HeaderText = "NoteId";
-            noteIdDataGridViewTextBoxColumn.Name = "noteIdDataGridViewTextBoxColumn";
             // 
             // titleDataGridViewTextBoxColumn
             // 
@@ -72,29 +63,11 @@ namespace ExamProject
             titleDataGridViewTextBoxColumn.HeaderText = "Title";
             titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             // 
-            // contextDataGridViewTextBoxColumn
-            // 
-            contextDataGridViewTextBoxColumn.DataPropertyName = "Context";
-            contextDataGridViewTextBoxColumn.HeaderText = "Context";
-            contextDataGridViewTextBoxColumn.Name = "contextDataGridViewTextBoxColumn";
-            // 
             // importanceDataGridViewTextBoxColumn
             // 
             importanceDataGridViewTextBoxColumn.DataPropertyName = "Importance";
             importanceDataGridViewTextBoxColumn.HeaderText = "Importance";
             importanceDataGridViewTextBoxColumn.Name = "importanceDataGridViewTextBoxColumn";
-            // 
-            // ownerIdDataGridViewTextBoxColumn
-            // 
-            ownerIdDataGridViewTextBoxColumn.DataPropertyName = "OwnerId";
-            ownerIdDataGridViewTextBoxColumn.HeaderText = "OwnerId";
-            ownerIdDataGridViewTextBoxColumn.Name = "ownerIdDataGridViewTextBoxColumn";
-            // 
-            // ownerDataGridViewTextBoxColumn
-            // 
-            ownerDataGridViewTextBoxColumn.DataPropertyName = "Owner";
-            ownerDataGridViewTextBoxColumn.HeaderText = "Owner";
-            ownerDataGridViewTextBoxColumn.Name = "ownerDataGridViewTextBoxColumn";
             // 
             // CreationDate
             // 
@@ -102,17 +75,20 @@ namespace ExamProject
             CreationDate.HeaderText = "CreationDate";
             CreationDate.Name = "CreationDate";
             // 
-            // ModificationDate
+            // richTextBoxNoteContext
             // 
-            ModificationDate.DataPropertyName = "ModificationDate";
-            ModificationDate.HeaderText = "ModificationDate";
-            ModificationDate.Name = "ModificationDate";
+            richTextBoxNoteContext.Location = new Point(361, 12);
+            richTextBoxNoteContext.Name = "richTextBoxNoteContext";
+            richTextBoxNoteContext.Size = new Size(276, 96);
+            richTextBoxNoteContext.TabIndex = 1;
+            richTextBoxNoteContext.Text = "";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(989, 450);
+            ClientSize = new Size(649, 450);
+            Controls.Add(richTextBoxNoteContext);
             Controls.Add(dataGridViewNotes);
             Name = "MainForm";
             Text = "Notes";
@@ -125,13 +101,9 @@ namespace ExamProject
 
         private DataGridView dataGridViewNotes;
         private BindingSource noteBindingSource;
-        private DataGridViewTextBoxColumn noteIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn contextDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn importanceDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn ownerIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn ownerDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn CreationDate;
-        private DataGridViewTextBoxColumn ModificationDate;
+        private RichTextBox richTextBoxNoteContext;
     }
 }

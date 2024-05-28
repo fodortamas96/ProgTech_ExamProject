@@ -1,4 +1,5 @@
 using ExamProject.Database;
+using ExamProject.Notes;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
@@ -29,6 +30,18 @@ namespace ExamProject
 
             this.dbContext?.Dispose();
             this.dbContext = null;
+        }
+
+        private void dataGridViewNotes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (this.dbContext != null)
+            {
+                var note = (Note)this.dataGridViewNotes.CurrentRow.DataBoundItem;
+                if (note != null)
+                {
+                    richTextBoxNoteContext.Text = this.dbContext.Entry(note).Entity.Context;
+                }
+            }
         }
     }
 }
