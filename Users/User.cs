@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ExamProject.Users
 {
-    internal class User
+    public class User
     {
         public int UserId { get; set; }
         public string? Username { get; set; }

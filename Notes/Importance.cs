@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExamProject.Notes
 {
-    internal enum Importance
+    public enum Importance
     {
         Low, Normal, High
     }

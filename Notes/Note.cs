@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExamProject.Notes
 {
-    internal class Note
+    public class Note
     {
         public int NoteId { get; set; }
         public string? Title { get; set; }

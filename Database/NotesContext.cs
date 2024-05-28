@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ExamProject.Database
 {
-    internal class NotesContext : DbContext
+    public class NotesContext : DbContext
     {
         public DbSet<Note> Notes { get; set; }
         public DbSet<User> Users { get; set; }
@@ -23,7 +23,7 @@ namespace ExamProject.Database
         {
             modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, Username = "Testuser1", Password = "testPw1", Email = "test1@test.com" },
-                new User { UserId = 1, Username = "Testuser2", Password = "testPw2", Email = "test2@test.com" });
+                new User { UserId = 2, Username = "Testuser2", Password = "testPw2", Email = "test2@test.com" });
 
             modelBuilder.Entity<Note>().HasData(
                 new Note
