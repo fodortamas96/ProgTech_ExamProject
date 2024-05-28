@@ -1,4 +1,6 @@
-﻿using ExamProject.Notes;
+﻿using ExamProject.Interfaces;
+using ExamProject.Notes;
+using ExamProject.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,10 +14,14 @@ using System.Windows.Forms;
 
 namespace ExamProject
 {
-    public partial class AddForm : Form
+    public partial class AddForm : Form, ISubject
     {
         DbContext dbContext;
         string errorMessage = "";
+        Note note;
+
+        private List<IObserver> observers = new List<IObserver>();
+
         public AddForm(DbContext dbContext)
         {
             InitializeComponent();
@@ -23,6 +29,25 @@ namespace ExamProject
         }
 
         public string ErrorMessage { get => errorMessage; }
+        public Note Note { get => note; }
+
+        public void Attach(IObserver observer)
+        {
+            this.observers.Add(observer);
+        }
+
+        public void Detach(IObserver observer)
+        {
+            this.observers.Remove(observer);
+        }
+
+        public void Notify()
+        {
+            foreach (IObserver observer in observers)
+            {
+                observer.Update(this);
+            }
+        }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -45,6 +70,9 @@ namespace ExamProject
                 this.dbContext.Add(newNote);
                 this.dbContext.SaveChanges();
                 this.DialogResult = DialogResult.OK;
+                this.note = newNote;
+                this.Notify();
+
             }
             catch (Exception exception)
             {
