@@ -18,7 +18,7 @@ namespace ExamProject
             base.OnLoad(e);
 
             this.dbContext = new NotesContext();
-            this.dbContext.Database.EnsureDeleted();
+            //this.dbContext.Database.EnsureDeleted();
             this.dbContext.Database.EnsureCreated();
             this.dbContext.Notes.Load();
             this.noteBindingSource.DataSource = dbContext.Notes.Local.ToBindingList();
@@ -32,16 +32,12 @@ namespace ExamProject
             this.dbContext = null;
         }
 
-        private void dataGridViewNotes_SelectionChanged(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (this.dbContext != null)
-            {
-                var note = (Note)this.dataGridViewNotes.CurrentRow.DataBoundItem;
-                if (note != null)
-                {
-                    richTextBoxNoteContext.Text = this.dbContext.Entry(note).Entity.Context;
-                }
-            }
+            this.dbContext!.SaveChanges();
+
+            this.dataGridViewNotes.Refresh();
+            this.richTextBoxNoteContext.Refresh();
         }
     }
 }

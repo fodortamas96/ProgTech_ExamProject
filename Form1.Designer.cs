@@ -32,11 +32,12 @@ namespace ExamProject
         {
             components = new System.ComponentModel.Container();
             dataGridViewNotes = new DataGridView();
-            noteBindingSource = new BindingSource(components);
             titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             importanceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             CreationDate = new DataGridViewTextBoxColumn();
+            noteBindingSource = new BindingSource(components);
             richTextBoxNoteContext = new RichTextBox();
+            buttonSave = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewNotes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noteBindingSource).BeginInit();
             SuspendLayout();
@@ -51,11 +52,6 @@ namespace ExamProject
             dataGridViewNotes.Name = "dataGridViewNotes";
             dataGridViewNotes.Size = new Size(343, 426);
             dataGridViewNotes.TabIndex = 0;
-            dataGridViewNotes.SelectionChanged += dataGridViewNotes_SelectionChanged;
-            // 
-            // noteBindingSource
-            // 
-            noteBindingSource.DataSource = typeof(Note);
             // 
             // titleDataGridViewTextBoxColumn
             // 
@@ -75,19 +71,35 @@ namespace ExamProject
             CreationDate.HeaderText = "CreationDate";
             CreationDate.Name = "CreationDate";
             // 
+            // noteBindingSource
+            // 
+            noteBindingSource.DataSource = typeof(Note);
+            // 
             // richTextBoxNoteContext
             // 
+            richTextBoxNoteContext.DataBindings.Add(new Binding("Text", noteBindingSource, "Context", true));
             richTextBoxNoteContext.Location = new Point(361, 12);
             richTextBoxNoteContext.Name = "richTextBoxNoteContext";
             richTextBoxNoteContext.Size = new Size(276, 96);
             richTextBoxNoteContext.TabIndex = 1;
             richTextBoxNoteContext.Text = "";
             // 
+            // buttonSave
+            // 
+            buttonSave.Location = new Point(361, 114);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(97, 34);
+            buttonSave.TabIndex = 2;
+            buttonSave.Text = "Save";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(649, 450);
+            Controls.Add(buttonSave);
             Controls.Add(richTextBoxNoteContext);
             Controls.Add(dataGridViewNotes);
             Name = "MainForm";
@@ -105,5 +117,6 @@ namespace ExamProject
         private DataGridViewTextBoxColumn importanceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn CreationDate;
         private RichTextBox richTextBoxNoteContext;
+        private Button buttonSave;
     }
 }
