@@ -38,6 +38,7 @@ namespace ExamProject
             noteBindingSource = new BindingSource(components);
             richTextBoxNoteContext = new RichTextBox();
             buttonSave = new Button();
+            buttonAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewNotes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noteBindingSource).BeginInit();
             SuspendLayout();
@@ -48,9 +49,9 @@ namespace ExamProject
             dataGridViewNotes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewNotes.Columns.AddRange(new DataGridViewColumn[] { titleDataGridViewTextBoxColumn, importanceDataGridViewTextBoxColumn, CreationDate });
             dataGridViewNotes.DataSource = noteBindingSource;
-            dataGridViewNotes.Location = new Point(12, 12);
+            dataGridViewNotes.Location = new Point(12, 52);
             dataGridViewNotes.Name = "dataGridViewNotes";
-            dataGridViewNotes.Size = new Size(343, 426);
+            dataGridViewNotes.Size = new Size(343, 386);
             dataGridViewNotes.TabIndex = 0;
             // 
             // titleDataGridViewTextBoxColumn
@@ -78,7 +79,7 @@ namespace ExamProject
             // richTextBoxNoteContext
             // 
             richTextBoxNoteContext.DataBindings.Add(new Binding("Text", noteBindingSource, "Context", true));
-            richTextBoxNoteContext.Location = new Point(361, 12);
+            richTextBoxNoteContext.Location = new Point(361, 52);
             richTextBoxNoteContext.Name = "richTextBoxNoteContext";
             richTextBoxNoteContext.Size = new Size(276, 96);
             richTextBoxNoteContext.TabIndex = 1;
@@ -86,7 +87,7 @@ namespace ExamProject
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(361, 114);
+            buttonSave.Location = new Point(361, 154);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(97, 34);
             buttonSave.TabIndex = 2;
@@ -94,11 +95,22 @@ namespace ExamProject
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
+            // buttonAdd
+            // 
+            buttonAdd.Location = new Point(12, 12);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(97, 34);
+            buttonAdd.TabIndex = 3;
+            buttonAdd.Text = "Add";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(649, 450);
+            Controls.Add(buttonAdd);
             Controls.Add(buttonSave);
             Controls.Add(richTextBoxNoteContext);
             Controls.Add(dataGridViewNotes);
@@ -118,5 +130,6 @@ namespace ExamProject
         private DataGridViewTextBoxColumn CreationDate;
         private RichTextBox richTextBoxNoteContext;
         private Button buttonSave;
+        private Button buttonAdd;
     }
 }

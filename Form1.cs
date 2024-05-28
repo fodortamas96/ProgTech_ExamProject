@@ -39,5 +39,12 @@ namespace ExamProject
             this.dataGridViewNotes.Refresh();
             this.richTextBoxNoteContext.Refresh();
         }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            AddForm addForm = new AddForm();
+            
+            DialogResult result = addForm.ShowDialog();
+        }
     }
 }
