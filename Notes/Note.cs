@@ -9,6 +9,16 @@ namespace ExamProject.Notes
 {
     public class Note
     {
+        public Note() { }
+        public Note(string? title, string? context, Importance importance, DateTime creationDate, int ownerId)
+        {
+            Title = title;
+            Context = context;
+            Importance = importance;
+            CreationDate = creationDate;
+            OwnerId = ownerId;
+        }
+
         public int NoteId { get; set; }
         public string? Title { get; set; }
         public string? Context { get; set; }

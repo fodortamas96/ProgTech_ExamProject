@@ -39,6 +39,7 @@ namespace ExamProject
             richTextBoxNoteContext = new RichTextBox();
             buttonSave = new Button();
             buttonAdd = new Button();
+            buttonDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewNotes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)noteBindingSource).BeginInit();
             SuspendLayout();
@@ -105,11 +106,22 @@ namespace ExamProject
             buttonAdd.UseVisualStyleBackColor = true;
             buttonAdd.Click += buttonAdd_Click;
             // 
+            // buttonDelete
+            // 
+            buttonDelete.Location = new Point(115, 12);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(97, 34);
+            buttonDelete.TabIndex = 4;
+            buttonDelete.Text = "Delete";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(649, 450);
+            Controls.Add(buttonDelete);
             Controls.Add(buttonAdd);
             Controls.Add(buttonSave);
             Controls.Add(richTextBoxNoteContext);
@@ -131,5 +143,6 @@ namespace ExamProject
         private RichTextBox richTextBoxNoteContext;
         private Button buttonSave;
         private Button buttonAdd;
+        private Button buttonDelete;
     }
 }

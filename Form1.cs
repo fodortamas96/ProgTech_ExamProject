@@ -42,9 +42,31 @@ namespace ExamProject
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            AddForm addForm = new AddForm();
-            
+            AddForm addForm = new AddForm(this.dbContext);
+
             DialogResult result = addForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                MessageBox.Show("Note added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(addForm.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (dataGridViewNotes.CurrentRow != null)
+                {
+                    var selectedNote = (Note)dataGridViewNotes.CurrentRow.DataBoundItem;
+                    this.dbContext!.Remove(selectedNote);
+                    this.dbContext!.SaveChanges();
+                }
+            }
+
         }
     }
 }

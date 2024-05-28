@@ -35,7 +35,7 @@
             radioButtonHigh = new RadioButton();
             groupBoxImportance = new GroupBox();
             textBoxTitle = new TextBox();
-            richTextBox1 = new RichTextBox();
+            richTextBoxContent = new RichTextBox();
             buttonAdd = new Button();
             groupBoxImportance.SuspendLayout();
             SuspendLayout();
@@ -109,13 +109,13 @@
             textBoxTitle.Size = new Size(277, 23);
             textBoxTitle.TabIndex = 6;
             // 
-            // richTextBox1
+            // richTextBoxContent
             // 
-            richTextBox1.Location = new Point(12, 100);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(277, 81);
-            richTextBox1.TabIndex = 7;
-            richTextBox1.Text = "";
+            richTextBoxContent.Location = new Point(12, 100);
+            richTextBoxContent.Name = "richTextBoxContent";
+            richTextBoxContent.Size = new Size(277, 81);
+            richTextBoxContent.TabIndex = 7;
+            richTextBoxContent.Text = "";
             // 
             // buttonAdd
             // 
@@ -133,7 +133,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(301, 324);
             Controls.Add(buttonAdd);
-            Controls.Add(richTextBox1);
+            Controls.Add(richTextBoxContent);
             Controls.Add(textBoxTitle);
             Controls.Add(groupBoxImportance);
             Controls.Add(labelContent);
@@ -155,7 +155,7 @@
         private RadioButton radioButtonHigh;
         private GroupBox groupBoxImportance;
         private TextBox textBoxTitle;
-        private RichTextBox richTextBox1;
+        private RichTextBox richTextBoxContent;
         private Button buttonAdd;
     }
 }
