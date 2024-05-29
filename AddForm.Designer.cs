@@ -37,6 +37,9 @@
             textBoxTitle = new TextBox();
             richTextBoxContent = new RichTextBox();
             buttonAdd = new Button();
+            checkBoxEmail = new CheckBox();
+            labelEmail = new Label();
+            textBoxEmail = new TextBox();
             groupBoxImportance.SuspendLayout();
             SuspendLayout();
             // 
@@ -119,7 +122,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(96, 265);
+            buttonAdd.Location = new Point(101, 330);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(97, 34);
             buttonAdd.TabIndex = 8;
@@ -127,11 +130,44 @@
             buttonAdd.UseVisualStyleBackColor = true;
             buttonAdd.Click += buttonAdd_Click;
             // 
+            // checkBoxEmail
+            // 
+            checkBoxEmail.AutoSize = true;
+            checkBoxEmail.CheckAlign = ContentAlignment.MiddleRight;
+            checkBoxEmail.Location = new Point(12, 248);
+            checkBoxEmail.Name = "checkBoxEmail";
+            checkBoxEmail.Size = new Size(124, 19);
+            checkBoxEmail.TabIndex = 9;
+            checkBoxEmail.Text = "Email notification?";
+            checkBoxEmail.UseVisualStyleBackColor = true;
+            checkBoxEmail.CheckedChanged += checkBoxEmail_CheckedChanged;
+            // 
+            // labelEmail
+            // 
+            labelEmail.AutoSize = true;
+            labelEmail.Location = new Point(12, 270);
+            labelEmail.Name = "labelEmail";
+            labelEmail.Size = new Size(82, 15);
+            labelEmail.TabIndex = 10;
+            labelEmail.Text = "Email address:";
+            labelEmail.Visible = false;
+            // 
+            // textBoxEmail
+            // 
+            textBoxEmail.Location = new Point(12, 288);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(277, 23);
+            textBoxEmail.TabIndex = 11;
+            textBoxEmail.Visible = false;
+            // 
             // AddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(301, 324);
+            ClientSize = new Size(301, 376);
+            Controls.Add(textBoxEmail);
+            Controls.Add(labelEmail);
+            Controls.Add(checkBoxEmail);
             Controls.Add(buttonAdd);
             Controls.Add(richTextBoxContent);
             Controls.Add(textBoxTitle);
@@ -157,5 +193,8 @@
         private TextBox textBoxTitle;
         private RichTextBox richTextBoxContent;
         private Button buttonAdd;
+        private CheckBox checkBoxEmail;
+        private Label labelEmail;
+        private TextBox textBoxEmail;
     }
 }

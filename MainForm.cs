@@ -1,6 +1,7 @@
 using ExamProject.Database;
 using ExamProject.Interfaces;
 using ExamProject.Notes;
+using ExamProject.Notification.Strategy.Exact;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.Net;
@@ -77,24 +78,18 @@ namespace ExamProject
         {
             if ((subject as AddForm).DialogResult == DialogResult.OK)
             {
-                SendEmail(subject);
+                Notification.Notification notification;
+                if ((subject as AddForm).Email == true)
+                {
+                    notification = new Notification.Notification(new EmailNotification());
+                    notification.SendNotification(subject);
+                }
+                else
+                {
+                    notification = new Notification.Notification(new ModalNotification());
+                    notification.SendNotification(subject);
+                }
             }
-        }
-
-        public void SendEmail(ISubject subject)
-        {
-            SmtpClient smtpClient = new SmtpClient("smtp.mailersend.net", 587);
-            smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential("MS_wmqduK@trial-o65qngkk8zwgwr12.mlsender.net", "NTJ2x5oqPO0mfg0z");
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress("MS_wmqduK@trial-o65qngkk8zwgwr12.mlsender.net");
-            message.To.Add(new MailAddress("fodor.tamas48@gmail.com"));
-            message.Subject = "Note added";
-            message.Body = $"Note added successfully! Title: {(subject as AddForm).Note.Title}, Content: {(subject as AddForm).Note.Context}, Importance: {(subject as AddForm).Note.Importance}";
-            message.IsBodyHtml = true;
-            smtpClient.Send(message);
-            message.Dispose();
-
         }
     }
 }

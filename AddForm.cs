@@ -19,6 +19,8 @@ namespace ExamProject
         DbContext dbContext;
         string errorMessage = "";
         Note note;
+        bool email = false;
+        string emailAddress;
 
         private List<IObserver> observers = new List<IObserver>();
 
@@ -30,6 +32,8 @@ namespace ExamProject
 
         public string ErrorMessage { get => errorMessage; }
         public Note Note { get => note; }
+        public bool Email { get => email; }
+        public string EmailAddress { get => emailAddress; }
 
         public void Attach(IObserver observer)
         {
@@ -51,15 +55,17 @@ namespace ExamProject
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            
+
             Importance importance;
             if (radioButtonLow.Checked)
             {
                 importance = Importance.Low;
-            } else if (radioButtonNormal.Checked)
+            }
+            else if (radioButtonNormal.Checked)
             {
                 importance = Importance.Normal;
-            } else
+            }
+            else
             {
                 importance = Importance.High;
             }
@@ -71,6 +77,7 @@ namespace ExamProject
                 this.dbContext.SaveChanges();
                 this.DialogResult = DialogResult.OK;
                 this.note = newNote;
+                this.emailAddress = textBoxEmail.Text;
                 this.Notify();
 
             }
@@ -80,6 +87,22 @@ namespace ExamProject
                 this.errorMessage = exception.Message;
             }
             this.Close();
+        }
+
+        private void checkBoxEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxEmail.Checked == true)
+            {
+                labelEmail.Visible = true;
+                textBoxEmail.Visible = true;
+                email = true;
+            } else
+            {
+                labelEmail.Visible = false;
+                textBoxEmail.Visible = false;
+                textBoxEmail.Text = string.Empty;
+                email = false;
+            }
         }
     }
 }
